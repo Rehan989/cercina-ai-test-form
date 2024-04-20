@@ -1,0 +1,64 @@
+<!-- public/index.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subscriber Form</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Subscriber Form</h2>
+      <form id="subscriberForm">
+
+        <div class="form-group">
+          <label for="whatsappPhone">WhatsApp Phone</label>
+          <input
+            type="text"
+            class="form-control"
+            id="whatsappPhone"
+            placeholder="Enter WhatsApp phone number"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <!-- Bootstrap JS and Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      document
+        .getElementById("subscriberForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // prevent default form submission
+
+          // Gather form data
+          const whatsappPhone = document.getElementById("whatsappPhone").value;
+
+          // Prepare request body
+          const requestBody = {
+            whatsapp_phone: whatsappPhone,
+          };
+
+          // Make API request to your backend server
+          axios
+            .post("/createSubscriber", requestBody)
+            .then(function (response) {
+              console.log("API Response:", response.data);
+              alert("Subscriber created successfully!");
+              // You can redirect or do something else after successful submission
+            })
+            .catch(function (error) {
+              console.error("API Error:", error);
+              alert("Error creating subscriber. Please try again.");
+            });
+        });
+    </script>
+  </body>
+</html>
