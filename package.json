@@ -1,0 +1,15 @@
+{
+  "name": "your-express-app",
+  "version": "1.0.0",
+  "description": "Your Node.js Express application",
+  "main": "index.js", // assuming your main entry point is index.js
+  "scripts": {
+    "start": "node index.js", // script to start your Express server
+    "install": "npm install" // script to install dependencies
+  },
+  "dependencies": {
+    "express": "^4.17.1", // version may vary
+    "axios": "^0.21.1", // version may vary
+    "body-parser": "^1.19.0" // version may vary
+  }
+}
